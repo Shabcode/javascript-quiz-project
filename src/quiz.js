@@ -24,23 +24,20 @@ class Quiz {
     }
 
     checkAnswer(answer) {
-        if (answer) {
+        if (answer===this.getQuestion().answer) {
             this.correctAnswers++;
         }
     }
 
     hasEnded() {
-        if (this.currentQuestionIndex < this.questions.length) {
-            return false;
-        }
-        return true;
+        return this.currentQuestionIndex === this.questions.length;
     }
 
     filterQuestionsByDifficulty(difficulty) {
         if (difficulty !== 1 && difficulty !== 2 && difficulty !== 3) {
             return this.questions;
         }
-        this.questions = this.questions.filter(question => question.difficulty === difficulty);
+        this.questions = this.questions.filter((question) => question.difficulty === difficulty);
         return this.questions;
     }
     averageDifficulty() {
